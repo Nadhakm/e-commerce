@@ -1,16 +1,23 @@
 const express = require('express')
 const itemRouter = express.Router()
 
+const { getAllItems } = require('../controllers/itemController')
+const { getItemById } = require('../controllers/itemController')
+const { createItem } = require('../controllers/itemController')
+const { updateItem } = require('../controllers/itemController')
+const { deleteItem } = require('../controllers/itemController')
 
-itemRouter.get('/',)
+const { protect } = require('../middlewares/authMiddleware')
 
-itemRouter.get('/:itemId',)
+itemRouter.get('/', getAllItems)
 
-itemRouter.post('/create',)
+itemRouter.get('/:itemId', getItemById)
 
-itemRouter.patch('/update/:itemId',)
+itemRouter.post('/create', protect, createItem)
 
-itemRouter.delete('/delete/:itemId',)
+itemRouter.patch('/update/:itemId', protect, updateItem)
+
+itemRouter.delete('/delete/:itemId', protect, deleteItem)
 
 
 module.exports = itemRouter

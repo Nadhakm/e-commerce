@@ -1,14 +1,22 @@
 const express = require('express')
 const sellerRouter = express.Router()
 
+const { getSellerProducts } = require('../controllers/sellerController');
+const { uploadProduct } = require('../controllers/sellerController');
+const { updateSellerProduct } = require('../controllers/sellerController');
+const { getSellerOrders } = require('../controllers/sellerController');
 
-sellerRouter.get('/products',)
+const { protect } = require('../middlewares/authMiddleware');
 
-sellerRouter.post('/upload',)
+sellerRouter.use(protect);
 
-sellerRouter.patch('/update/:sellerId',)
+sellerRouter.get('/products', getSellerProducts)
 
-sellerRouter.get('/orders',)
+sellerRouter.post('/upload', uploadProduct)
+
+sellerRouter.patch('/update/:sellerId', updateSellerProduct)
+
+sellerRouter.get('/orders', getSellerOrders)
 
 
 module.exports = sellerRouter
