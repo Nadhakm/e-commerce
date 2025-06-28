@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const authUser = (req, res, next) => {
     try {
-        const {token} = req.cookies
+        const {token} = req.cookies || {};
         if(!token) {
             return res.status(401).json({message: "User not authorized"})
         }

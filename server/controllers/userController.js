@@ -100,12 +100,12 @@ const getProfile = async (req, res, next) => {
 
 const updateProfile = async (req, res, next) => {
   try {
-    const { name, phoneNo, address } = req.body;
+    const { name, phoneNo, address, role } = req.body;
     const userId = req.user.id;
 
     const user = await User.findByIdAndUpdate(
       userId,
-      { name, phoneNo, address },
+      { name, phoneNo, address, role},
       { new: true }
     ).select('-password');
 

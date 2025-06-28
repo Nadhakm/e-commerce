@@ -22,8 +22,8 @@ userRouter.get('/profile', authUser, getProfile)
 
 userRouter.patch('/update', authUser, updateProfile)
 
-userRouter.delete('/delete/:userId', authAdmin, deleteUser)
+userRouter.delete('/delete/:userId', authUser, deleteUser)
 
-userRouter.get('/check-user', authUser,checkUser)
+userRouter.get('/check-user', authUser, checkUser)
 
 module.exports = userRouter

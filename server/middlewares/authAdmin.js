@@ -12,6 +12,7 @@ const authAdmin = (req, res, next) => {
             return res.status(401).json({message: "User not authorized"})
         }
 
+        console.log(decodedToken.role)
         if(decodedToken.role != 'admin') {
             return res.status(401).json({message: "User not authorized"})
         }
