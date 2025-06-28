@@ -6,9 +6,7 @@ const { uploadProduct } = require('../controllers/sellerController');
 const { updateSellerProduct } = require('../controllers/sellerController');
 const { getSellerOrders } = require('../controllers/sellerController');
 
-const { protect } = require('../middlewares/authMiddleware');
 
-sellerRouter.use(protect);
 
 sellerRouter.get('/products', getSellerProducts)
 

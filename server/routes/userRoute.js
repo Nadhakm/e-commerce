@@ -9,7 +9,8 @@ const { updateProfile } = require('../controllers/userController');
 const { deleteUser } = require('../controllers/userController');
 const { checkUser } = require('../controllers/userController');
 
-const { protect } = require('../middlewares/authMiddleware');
+const authUser = require('../middlewares/authUser')
+const authAdmin = require('../middlewares/authAdmin')
 
 userRouter.post('/register', register)
 
@@ -17,12 +18,12 @@ userRouter.post('/login', login)
 
 userRouter.get('/logout', logout)
 
-userRouter.get('/profile', protect, getProfile)
+userRouter.get('/profile', authUser, getProfile)
 
-userRouter.patch('/update', protect, updateProfile)
+userRouter.patch('/update', authUser, updateProfile)
 
-userRouter.delete('/delete/:userId', protect, deleteUser)
+userRouter.delete('/delete/:userId', authAdmin, deleteUser)
 
-userRouter.get('/checkUser', checkUser)
+userRouter.get('/check-user', authUser,checkUser)
 
 module.exports = userRouter

@@ -6,9 +6,6 @@ const { getPendingProducts } = require('../controllers/adminController');
 const { approveProduct } = require('../controllers/adminController');
 const { rejectProduct } = require('../controllers/adminController');
 
-const { protect } = require('../middlewares/authMiddleware');
-
-adminRouter.use(protect);
 
 adminRouter.get('/orders', getAllOrders);
 adminRouter.get('/products/pending', getPendingProducts);

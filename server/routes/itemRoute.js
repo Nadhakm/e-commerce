@@ -7,17 +7,16 @@ const { createItem } = require('../controllers/itemController')
 const { updateItem } = require('../controllers/itemController')
 const { deleteItem } = require('../controllers/itemController')
 
-const { protect } = require('../middlewares/authMiddleware')
 
 itemRouter.get('/', getAllItems)
 
 itemRouter.get('/:itemId', getItemById)
 
-itemRouter.post('/create', protect, createItem)
+itemRouter.post('/create', createItem)
 
-itemRouter.patch('/update/:itemId', protect, updateItem)
+itemRouter.patch('/update/:itemId', updateItem)
 
-itemRouter.delete('/delete/:itemId', protect, deleteItem)
+itemRouter.delete('/delete/:itemId', deleteItem)
 
 
 module.exports = itemRouter

@@ -6,9 +6,6 @@ const { getUserOrders } = require('../controllers/orderController');
 const { getAllOrders } = require('../controllers/orderController');
 const { updateOrderStatus } = require('../controllers/orderController');
 
-const { protect } = require('../middlewares/authMiddleware');
-
-orderRouter.use(protect);
 
 orderRouter.post('/', placeOrder)
 

@@ -7,17 +7,16 @@ const { createProduct } = require('../controllers/productController');
 const { updateProduct } = require('../controllers/productController');
 const { deleteProduct } = require('../controllers/productController');
 
-const { protect } = require('../middlewares/authMiddleware');
 
 productRouter.get('/', getAllProducts)
 
 productRouter.get('/:productId', getProductById)
 
-productRouter.post('/create', protect, createProduct)
+productRouter.post('/create', createProduct)
 
-productRouter.patch('/update/:productId', protect, updateProduct)
+productRouter.patch('/update/:productId', updateProduct)
 
-productRouter.delete('/delete/:productId', protect, deleteProduct)
+productRouter.delete('/delete/:productId', deleteProduct)
 
 
 module.exports = productRouter
