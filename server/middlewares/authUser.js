@@ -12,11 +12,17 @@ const authUser = (req, res, next) => {
             return res.status(401).json({message: "User not authorized"})
         }
 
+        // if (!decodedToken.isSeller) {
+        //     return res.status(403).json({ message: 'Seller access only' });
+        // }
+
+
         req.user = decodedToken
 
         next()
     } catch (error) {
-        console.log(error)        
+        console.log(error)  
+        return res.status(401).json({ message: 'Token invalid or expired' })      
     }
 }
 

@@ -42,7 +42,7 @@ const updateProduct = async (req, res) => {
     const { productId } = req.params;
 
     const updated = await Product.findOneAndUpdate(
-      { _id: productId, seller_id: req.user._id },
+      { _id: productId, seller_id: req.user.id },
       req.body,
       { new: true }
     );
@@ -51,6 +51,7 @@ const updateProduct = async (req, res) => {
 
     res.status(200).json({ message: 'Product updated', product: updated });
   } catch (error) {
+    console.error("Update Product Error:", error);
     res.status(500).json({ error: 'Failed to update product' });
   }
 };
@@ -61,7 +62,7 @@ const deleteProduct = async (req, res) => {
 
     const deleted = await Product.findOneAndDelete({
       _id: productId,
-      seller_id: req.user._id
+      seller_id: req.user.id
     });
 
     if (!deleted) return res.status(404).json({ message: 'Product not found or not owned by you' });
