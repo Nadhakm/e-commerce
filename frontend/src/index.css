@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#f2d6dc] text-gray-800 dark:bg-zinc-900 dark:text-white font-fancy;
+}
